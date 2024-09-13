@@ -11,7 +11,7 @@ class MainViewModel : ViewModel() {
 
     fun fetchData(apiKey: String, onResult: (Apod?) -> Unit){
         viewModelScope.launch(Dispatchers.IO){
-            val response = RetrofitClient.api.getApod(apiKey)
+            val response = RetrofitClient.api.getApod(apiKey, date = "2003-05-04")
             if (response.isSuccessful){
                 onResult(response.body())
             } else {
